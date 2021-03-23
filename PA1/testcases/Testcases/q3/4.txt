@@ -1,0 +1,8 @@
+(define (even? x) (= (remainder x 2) 0))
+(define (odd? x)  (not (even? x)))
+(define (true x) #t)
+(define (false x) #f)
+(define (positive? x) (> x 0))
+(define (negative? x) (< x 0))
+(define (multiple-of-hundred? x) (= (remainder x 100) 0))
+(filter-all (list odd?) -4 6)

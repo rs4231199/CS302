@@ -1,0 +1,3 @@
+(define desc-sort (make-qsort >))
+(define l '(-95 15 -95 -68))
+(desc-sort l)

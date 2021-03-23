@@ -1,0 +1,3 @@
+(define desc-sort (make-qsort >))
+(define l '())
+(desc-sort l)

@@ -1,0 +1,71 @@
+Question 1:
+changes
+	i) null to '()
+	ii) print to display
+	iii) defined procedure filter(which is a built-in procedure in racket)
+
+$ diff b18080-pa1/q1.scm b18080-pa1-old/q1.scm
+1c1
+< #lang sicp
+---
+> #lang racket
+11,17d10
+< (define (filter check in)
+<   (if (null? in)
+<       '()
+<       (if (check (car in))
+<           (cons (car in) (filter check (cdr in)))
+<           (filter check (cdr in)))))
+<
+35c28
+<       '()
+---
+>       null
+48c41
+<        (display "invalid operator"))]))
+---
+>        (print "invalid operator"))]))
+
+
+Question 2:
+changes
+	i) changed null to '()
+
+$ diff b18080-pa1/q2.scm b18080-pa1-old/q2.scm
+1c1
+< #lang racket
+---
+> #lang sicp
+5c5
+<      null
+---
+>      '()
+9,11c9,11
+<     ([null? (cdr in)] null)
+<     ([null? (cddr in)] null)
+<     ([null? (cdddr in)] null)
+---
+>     ([null? (cdr in)] '())
+>     ([null? (cddr in)] '())
+>     ([null? (cdddr in)] '())
+
+
+Question 3:
+changes
+	i) changed null to '()
+	ii) removed unnecessary package that was imported earlier
+
+$ diff b18080-pa1/q3.scm b18080-pa1-old/q3.scm
+1,2c1
+< #lang racket
+< (require math/number-theory)
+---
+> #lang sicp
+9c8
+<         null)))
+---
+>         '())))
+12c11
+<      null
+---
+>      '()
