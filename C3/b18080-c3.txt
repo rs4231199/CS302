@@ -1,0 +1,6 @@
+lambda the ultimate
+===================
+
+Until now, there was no way to define custom function in Microsoft Excel sheets. Recently they released LAMBDA. It allows users to define custom functions. With LAMBDA, Excel has become Turing-complete.
+
+We have understood the lambda in the class. And we know from practical and theory lessons that everything other than lambda is syntactic sugar. Excel can now do a lot more than it could do before.
