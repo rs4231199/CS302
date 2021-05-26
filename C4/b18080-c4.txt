@@ -1,0 +1,2 @@
+Speaker discussed the importance of functional programming.
+He discussed how we can represent data and do operations on it just using functions.
