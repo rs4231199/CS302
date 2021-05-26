@@ -1,0 +1,76 @@
+89,91c89
+<              (if (equal? n 1)
+<                  (cons-stream firstMoveOfFu (fu (+ 1 n)))
+<                  (cons-stream (stream-ref (pooh 1) (- n 2)) (fu (+ 1 n)))))
+---
+>              (cons-stream (stream-ref Pooh (- n 2)) (fu (+ 1 n))))
+93,96c91,92
+<              (if (equal? n 1)
+<                  (cons-stream 4 (pooh (+ 1 n)))
+<                  (cons-stream (stream-ref (fu 1) (- n 2)) (pooh (+ 1 n)))))
+<            
+---
+>              (cons-stream (stream-ref Fu (- n 2)) (pooh (+ 1 n))))
+> 
+98,99c94,95
+<            (set! Fu (fu 1))
+<            (set! Pooh (pooh 1))))
+---
+>            (set! Fu (cons-stream firstMoveOfFu (fu 2)))
+>            (set! Pooh (cons-stream 4 (pooh 2)))))
+103,105c99
+<              (if (equal? n 1)
+<                  (cons-stream firstMoveOfFu (fu (+ 1 n)))
+<                  (cons-stream (get-from (pooh 1) (- n 1)) (fu (+ 1 n)))))
+---
+>              (cons-stream (get-from Pooh (- n 1)) (fu (+ 1 n))))
+107,109c101
+<              (if (equal? n 1)
+<                  (cons-stream 4 (pooh (+ 1 n)))
+<                  (cons-stream (stream-ref (fu 1) (- n 2)) (pooh (+ 1 n)))))
+---
+>              (cons-stream (stream-ref Fu (- n 2)) (pooh (+ 1 n))))
+112,113c104,105
+<            (set! Fu (fu 1))
+<            (set! Pooh (pooh 1))))
+---
+>            (set! Fu (cons-stream firstMoveOfFu (fu 2)))
+>            (set! Pooh (cons-stream 4 (pooh 2)))))
+117,119c109
+<              (if (equal? n 1)
+<                  (cons-stream firstMoveOfFu (fu (+ 1 n)))
+<                  (cons-stream (stream-ref (pooh 1) (- n 2)) (fu (+ 1 n)))))
+---
+>              (cons-stream (stream-ref Pooh (- n 2)) (fu (+ 1 n))))
+121,123c111
+<              (if (equal? n 1)
+<                  (cons-stream 4 (pooh (+ 1 n)))
+<                  (cons-stream (get-from (fu 1) (- n 1)) (pooh (+ 1 n)))))
+---
+>              (cons-stream (get-from Fu (- n 1)) (pooh (+ 1 n))))
+126,127c114,115
+<            (set! Fu (fu 1))
+<            (set! Pooh (pooh 1))))
+---
+>            (set! Fu (cons-stream firstMoveOfFu (fu 2)))
+>            (set! Pooh (cons-stream 4 (pooh 2)))))
+131,134c119
+<              (cond ((= n 1)
+<                     (cons-stream firstMoveOfFu (fu (+ 1 n))))
+<                    (else
+<                     (cons-stream (get-from (pooh 1) (- n 1)) (fu (+ 1 n))))))
+---
+>              (cons-stream (get-from Pooh (- n 1)) (fu (+ 1 n))))
+136,139c121
+<              (cond ((= n 1)
+<                     (cons-stream 4 (pooh (+ 1 n))))
+<                    (else 
+<                     (cons-stream (get-from (fu 1) (- n 1)) (pooh (+ 1 n))))))
+---
+>              (cons-stream (get-from Fu (- n 1)) (pooh (+ 1 n))))
+142,143c124,125
+<            (set! Fu (fu 1))
+<            (set! Pooh (pooh 1)))))
+---
+>            (set! Fu (cons-stream firstMoveOfFu (fu 2)))
+>            (set! Pooh (cons-stream 4 (pooh 2))))))

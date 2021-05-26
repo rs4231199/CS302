@@ -31,10 +31,20 @@
       (cons-stream (proc (stream-car s))
                    (stream-map proc (stream-cdr s)))))
 
+
+
+
+;=======================ends here====================
+
 (define (get-from s n)
   (define (get-favorite s n c1 c2 c3 c4)
-    (if (= n 0)
+    (if (<= n 1)
         (let ()
+          (cond
+            ((equal? (stream-car s) 1) (set! c1 (inc c1)))
+            ((equal? (stream-car s) 2) (set! c2 (inc c2)))
+            ((equal? (stream-car s) 3) (set! c3 (inc c3)))
+            ((equal? (stream-car s) 4) (set! c4 (inc c4))))
           (define favorite 4)
           (define its-count 0)
           (if(> c4 its-count) (begin (set! favorite 4) (set! its-count c4)))
@@ -59,20 +69,32 @@
   
   (beats-favorite (get-favorite s n 0 0 0 0)))
 
-(define (fu n)
-  (if (equal? n 1)
-      (cons-stream 3 (fu (+ 1 n)))
-      (cons-stream (get-from (pooh 1) (- n 2)) (fu (+ 1 n)))))
-(define (pooh n)
-  (if (equal? n 1)
-      (cons-stream 4 (pooh (+ 1 n)))
-      (cons-stream (stream-ref (fu 1) (- n 2)) (pooh (+ 1 n)))))
+; 2 2 3 10
+;(define (fu n)
+;             (if (equal? n 1)
+;                 (cons-stream 3 (fu (+ 1 n)))
+;                 (cons-stream (stream-ref (pooh 1) (- n 2)) (fu (+ 1 n)))))
 
-(stream-ref (fu 1) 4)
+;(3 4 4 2 2 2 2 3 3 3)
+;(4 4 2 2 2 2 3 3 3 3)
+
+(define (fu n)
+  (cond ((= n 1)
+         (cons-stream 3 (fu (+ 1 n))))
+        (else
+         (cons-stream (get-from (pooh 1) (- n 1)) (fu (+ 1 n))))))
+
+(define (pooh n)
+  (cond ((= n 1)
+         (cons-stream 4 (pooh (+ 1 n))))
+        (else 
+         (cons-stream (get-from (fu 1) (- n 1)) (pooh (+ 1 n))))))
+
+;(stream-ref (fu 1) 1)
 
 (define (print s n)
   (if (= n 0)
       '()
       (cons (stream-car s) (print (stream-cdr s) (- n 1)))))
-(print (fu 1) 10) ;(3 2 2 2 3 3 3 4 4 4)
-(print (pooh 1) 10) ;(4 3 2 2 2 3 3 3 4 4)
+(print (fu 1) 10) ;(3 2 2 2 2 2 2 4 4 4)
+(print (pooh 1) 10) ;(4 4 4 3 3 3 3 3 3 3)

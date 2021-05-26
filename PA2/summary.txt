@@ -1,0 +1,1 @@
+I removed `if`s from the streams. Everything else is the same.
