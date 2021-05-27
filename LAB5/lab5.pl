@@ -1,6 +1,7 @@
 % myLength(L,N)
 myLength([], 0).
 myLength([ _ | Tail ], N) :- myLength(Tail, M), N is M + 1.
+% myLength([a, b, b], X).
 
 %  myLast(X, L)
 myLast(X,[ X ]).
